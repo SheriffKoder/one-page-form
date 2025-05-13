@@ -31,11 +31,11 @@
     --color-warning: #e9164b;
   }
   [data-theme="dark"] {
-    --color-background: #000000;
-    --color-foreground: #ffffff;
-    --color-primary: #4c1472;
-    --color-secondary: #34d399;
-    --color-tertiary: #a78bfa;
+    --color-background: #ffffff;
+    --color-foreground: #0e0e0e;
+    --color-primary: #1f51a3;
+    --color-secondary: #15976c;
+    --color-tertiary: #4e26ad;
     --color-warning: #e9164b;
   }
   [data-theme="custom"] {
