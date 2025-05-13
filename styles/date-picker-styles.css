@@ -1,0 +1,132 @@
+/* Make the calendar take full width */
+.custom-datepicker {
+  width: 100% !important;
+}
+
+.react-datepicker {
+  border: 1px solid #e5e7eb !important;
+}
+
+.react-datepicker__header {
+  background-color: var(--color-primary) !important;
+  color: var(--color-background) !important;
+}
+
+.react-datepicker__day-name {
+  /* background-color: var(--color-primary) !important; */
+  color: var(--color-background) !important;
+}
+
+
+
+/* Make the month container take full width */
+.custom-datepicker .react-datepicker__month-container {
+  width: 100%;
+}
+
+/* Make the month take full width */
+.custom-datepicker .react-datepicker__month {
+  width: 100%;
+}
+
+/* Make the week rows take full width */
+.custom-datepicker .react-datepicker__week {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+/* Make the day cells equal width and height for perfect circles */
+.custom-datepicker .react-datepicker__day {
+  flex: 0 0 auto;
+  width: 2.1rem !important;
+  height: 2rem !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; /* Use 50% for perfect circles */
+  padding: 0; /* Remove any padding that might affect the shape */
+  line-height: 1; /* Reset line height */
+  position: relative; /* For the pseudo-element approach */
+  max-width: 2.1rem;
+}
+
+/* Create a perfect circle using a pseudo-element if needed */
+.custom-datepicker .react-datepicker__day::before {
+  content: "";
+  display: block;
+  padding-top: 100%; /* Creates a 1:1 aspect ratio */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Style the day names header */
+.custom-datepicker .react-datepicker__day-name {
+  flex: 0 0 auto;
+  margin: 0.2rem;
+  width: 2.1rem !important;
+  text-align: center;
+  max-width: 2.1rem;
+}
+
+/* Style the header with day names */
+.custom-datepicker .react-datepicker__header {
+  background-color: white;
+  border-bottom: none;
+}
+
+/* Make the day names row take full width */
+.custom-datepicker .react-datepicker__day-names {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+/* Hover effect for days */
+.custom-datepicker .react-datepicker__day:hover, .react-datepicker__day--selected:hover {
+  background-color: #f3f4f6;
+  border-radius: 50%;
+  color: black !important;
+  transition: background-color 0.3s ease;
+}
+
+/* Today's day style - initially gray background if not selected */
+.custom-datepicker .today-day {
+  background-color: #929292;
+  border-radius: 50%;
+  font-weight: bold;
+  color: var(--color-background);
+  transition: background-color 0.3s ease;
+}
+
+/* Selected day style - primary color */
+.custom-datepicker .selected-day,
+.custom-datepicker .react-datepicker__day--selected {
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  color: var(--color-background) !important;
+}
+
+/* Override the default selected day styling */
+.custom-datepicker .react-datepicker__day--selected:not(.selected-day) {
+  background-color: var(--color-primary);
+  color: var(--color-foreground);
+}
+
+/* Make sure today's styling is overridden when selected */
+.custom-datepicker .today-day.react-datepicker__day--selected {
+  background-color: var(--color-primary);
+  color: var(--color-foreground);
+}
+
+/* Fix for aspect ratio - ensure the container maintains equal width and height */
+.custom-datepicker .react-datepicker__day-wrapper {
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 

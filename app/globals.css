@@ -1,26 +1,180 @@
+/* https://medium.com/@kevstrosky/theme-colors-with-tailwind-css-v4-0-and-next-themes-dark-light-custom-mode-36dca1e20419 */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* custom variant for dark theme dark:bg-red-500 */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant custom (&:where([data-theme=custom], [data-theme=custom] *));
+
+
+/* define colors for different theme names */
+@theme {
+  --color-background: #ffffff;
+  --color-foreground: #0e0e0e;
+  --color-primary: #1f51a3;
+  --color-secondary: #15976c;
+  --color-tertiary: #4e26ad;
+  --color-warning: #e9164b;
+
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* custom bg-background, foreground, primary, secondary, tertiary etc.. */
+@layer base {
+  [data-theme="light"] {
+    --color-background: #ffffff;
+    --color-foreground: #0e0e0e;
+    --color-primary: #1f51a3;
+    --color-secondary: #15976c;
+    --color-tertiary: #4e26ad;
+    --color-warning: #e9164b;
+  }
+  [data-theme="dark"] {
+    --color-background: #000000;
+    --color-foreground: #ffffff;
+    --color-primary: #4c1472;
+    --color-secondary: #34d399;
+    --color-tertiary: #a78bfa;
+    --color-warning: #e9164b;
+  }
+  [data-theme="custom"] {
+    --color-background: #14144d;
+    --color-foreground: #9b1414;
+    --color-primary: #00ffbf;
+    --color-secondary: #ff00ff;
+    --color-tertiary: #ffff00;
+    --color-warning: #e9164b;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  body {
+    /* @apply bg-background text-foreground */
+  }
+}
+
+/* /////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////// */
+/* Fonts */
+
+
+.cf1 {
+  @apply font-['font-ogg-reg']
+}
+/* imported font use */
+.cf2 {
+  @apply font-['Raleway']
+}
+
+/* /////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////// */
+/* Font styling */
+
+.rounded-v1 {
+  @apply rounded-lg
+}
+
+.heading1, .page-title {
+  @apply text-4xl md:text-6xl
+}
+
+.heading2, .section-title {
+  @apply text-xl
+}
+
+.heading3, label, .label, .input-label {
+  @apply text-base font-medium
+}
+
+.input-sublabel {
+  @apply text-[12px] text-foreground/50
+}
+
+.paragraph1, .page-description {
+  @apply text-[1.5rem] md:text-xl font-light
+}
+
+.paragraph2, .section-description {
+  @apply text-base md:text-base font-extralight
+}
+
+.paragraph3, .input-text {
+  @apply text-[14px] md:text-sm font-light
+}
+
+.react-datepicker__day, .react-datepicker__day--026, .react-datepicker__day--weekend > * {
+  @apply text-[14px] md:text-sm font-light
+}
+
+
+/* media screen landscape and width less than 900 px and height less than 600 px */
+@media (orientation: landscape) and (max-width: 1024px) and (max-height: 500px) {
+  .Heading1 {
+    @apply text-5xl
+  }
+  .Heading2 {
+    @apply text-3xl
+  }
+  .Heading3 {
+    @apply text-3xl
+  }
+  .Paragraph1 {
+    @apply text-sm
+  }
+  .Paragraph2 {
+    @apply text-sm
+  }
+  .Paragraph3 {
+    @apply text-sm
+  }
+}
+
+/* //////////////////////////////////////////////////////////////////////// */
+
+
+html::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: var(--background);
+}
+
+html::-webkit-scrollbar-thumb {
+  @apply rounded-lg bg-primary
+}
+
+
+/* /////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////// */
+
+
+/* .form-input {
+  @apply border border-[#e9e9e9] px-[1rem] py-[0.5rem] transition-all duration-300 ease-in-out
+  outline-none rounded-md bg-[#f8f8f8] z-[1] focus:ring-1 focus:ring-primary/50 w-full md:w-[300px]
+} */
+
+.form-input {
+  @apply  border border-transparent border-b-primary/20 px-[1rem] py-[0.5rem] transition-all duration-300 ease-in-out
+  outline-none bg-[rgb(250,250,250)] z-[1]  w-full
+  focus:border-b-primary hover:border-b-primary
+  
+}
+
+.form-area {
+  @apply flex flex-col px-4 py-4 mx-auto w-full
+  transition-all duration-300 ease-in-out
+  shadow-[0_0px_10px_rgba(0,0,0,0.03)] bg-[rgb(254,254,254)]
+  focus-within:shadow-[0_1px_10px_rgba(0,0,0,0.1)] focus-within:bg-[rgb(253,253,253)]
+  hover:shadow-[0_1px_10px_rgba(0,0,0,0.1)] hover:bg-[rgb(253,253,253)]
+}
+
+.form-background {
+  @apply shadow-[0_1px_10px_rgba(0,0,0,0.05)] bg-[rgb(254,254,254)] min-h-[400px]
+}
+
+.pagination-tab:not(:last-child) {
+  box-shadow: 4px 0px 5px rgba(0,0,0,0.15);
 }
