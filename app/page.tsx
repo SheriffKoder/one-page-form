@@ -59,7 +59,7 @@ export default function Home() {
         <main className="w-full bg-background flex flex-col items-center pb-20 rounded-t-xl px-2 md:px-0">
           {/* Title Section with heading and subtext */}
           <header className="w-full max-w-xl lg:max-w-4xl flex flex-col items-center md:items-start 
-          justify-center mt-[100px] md:mt-[100px] mb-[20px] md:mb-[40px] gap-2">
+          justify-center mt-[100px] md:mt-[100px] mb-[20px] md:mb-[40px] gap-2 text-foreground">
             <h1 className="heading1 text-foreground">
               Sign In
             </h1>
